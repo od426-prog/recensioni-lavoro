@@ -217,7 +217,7 @@ grid.addEventListener("click", async (event) => {
 
 const viewModal = document.getElementById("viewReviewModal");
 
-const card = viewModal.querySelector(".review-view-card");
+// const card = viewModal.querySelector(".review-view-card");
 
 document.getElementById("viewReviewCompany").textContent =
   card.querySelector(".company-name")?.textContent || "Azienda";
