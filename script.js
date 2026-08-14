@@ -501,9 +501,8 @@ console.log("ERRORE SALVATAGGIO:", reviewError);
       closeModal();
 
       alert(
-        "Grazie! La tua recensione è stata inviata " +
-        "e verrà pubblicata dopo la moderazione."
-      );
+  "Grazie! La tua recensione è stata pubblicata."
+);
 
       loadCompanies(
         searchInput.value
