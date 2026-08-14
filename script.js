@@ -445,15 +445,14 @@ form.addEventListener(
       // SALVA LA RECENSIONE
       // --------------------------------------
 
-      const { data: newReview, error: reviewError } =
+     const { data: newReview, error: reviewError } =
   await db
     .from("recensioni")
     .insert({
       azienda_id: companyId,
       valutazione: score,
-pro: reviewText || null,
-contro: null,
-stato: "approved"
+      recensione: reviewText || null,
+      stato: "approved"
     })
     .select()
     .single();
