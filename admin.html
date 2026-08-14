@@ -176,10 +176,9 @@ async function loadPendingReviews() {
     .from("recensioni")
     .select(`
       id,
-      valutazione,
-      pro,
-      contro,
-      stato,
+     valutazione,
+recensione,
+stato,
       created_at,
       aziende (
         nome,
@@ -244,15 +243,10 @@ async function loadPendingReviews() {
           ${stars}
         </div>
 
-        <div class="section">
-          <strong>👍 Pro</strong>
-          ${review.pro || "Nessun commento"}
-        </div>
-
-        <div class="section">
-          <strong>👎 Contro</strong>
-          ${review.contro || "Nessun commento"}
-        </div>
+       <div class="section">
+<strong>💬 Recensione</strong>
+${review.recensione || "Nessuna recensione"}
+</div>
 
         <div class="buttons">
 
