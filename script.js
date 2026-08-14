@@ -7,8 +7,7 @@
 const SUPABASE_URL = "https://orvhpbbpaqbphnxajizs.supabase.co";
 
 // 2. INCOLLA QUI LA PUBLISHABLE KEY
-const SUPABASE_KEY = "sb_publishable_nN_-EClb2m55_WOUKj7iJg_pXEa01Yq
-";
+const SUPABASE_KEY = "sb_publishable_nN_-EClb2m55_WOUKj7iJg_pXEa01Yq";
 
 // ==========================================
 // CONNESSIONE SUPABASE
