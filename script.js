@@ -215,24 +215,46 @@ grid.addEventListener("click", async (event) => {
     return;
   }
 
-  const review = reviews[0];
+const viewModal = document.getElementById("viewReviewModal");
 
-  const viewModal = document.getElementById("viewReviewModal");
+const card = viewModal.querySelector(".review-view-card");
 
 document.getElementById("viewReviewCompany").textContent =
   card.querySelector(".company-name")?.textContent || "Azienda";
 
-document.getElementById("viewReviewRating").textContent =
-  "★".repeat(review.valutazione) +
-  "☆".repeat(5 - review.valutazione);
+const reviewsList =
+  document.getElementById("viewReviewsList");
 
-document.getElementById("viewReviewPros").textContent =
-  review.pro || "Nessun commento";
+reviewsList.innerHTML = reviews.map(review => {
 
-document.getElementById("viewReviewCons").textContent =
-  review.contro || "Nessun commento";
+  const stars =
+    "★".repeat(review.valutazione) +
+    "☆".repeat(5 - review.valutazione);
+
+  return `
+    <div class="review-modal-item">
+
+      <div class="review-view-rating">
+        ${stars}
+      </div>
+
+      <div class="review-section">
+        <h3>👍 Pro</h3>
+        <p>${review.pro || "Nessun commento"}</p>
+      </div>
+
+      <div class="review-section">
+        <h3>👎 Contro</h3>
+        <p>${review.contro || "Nessun commento"}</p>
+      </div>
+
+    </div>
+  `;
+
+}).join("");
 
 viewModal.classList.remove("hidden");
+viewModal.setAttribute("aria-hidden", "false");
 viewModal.setAttribute("aria-hidden", "false");
 });
 function closeViewReviewModal() {
