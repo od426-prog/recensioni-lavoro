@@ -235,11 +235,15 @@ document.getElementById("viewReviewCons").textContent =
 viewModal.classList.remove("hidden");
 viewModal.setAttribute("aria-hidden", "false");
 });
-document.querySelectorAll("[data-close-view-review]").forEach(element => {
-  element.addEventListener("click", () => {
-    viewModal.classList.add("hidden");
-    viewModal.setAttribute("aria-hidden", "true");
-  });
+document.addEventListener("click", (event) => {
+  const closeButton = event.target.closest("[data-close-view-review]");
+
+  if (!closeButton) return;
+
+  const modal = document.getElementById("viewReviewModal");
+
+  modal.classList.add("hidden");
+  modal.setAttribute("aria-hidden", "true");
 });
 // ==========================================
 // RICERCA
