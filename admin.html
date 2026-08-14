@@ -261,27 +261,20 @@ async function moderateReview(id, status) {
     return;
   }
 
+  const { error } = await db.rpc("moderate_review", {
+    review_id: id,
+    new_status: status
+  });
 
-const { error } = await db.rpc("moderate_review", {
-  review_id: id,
-  new_status: status
-});
-
-console.log("UPDATE DATA:", data);
-console.log("UPDATE ERROR:", error);
-
+  console.log("MODERATION ERROR:", error);
 
   if (error) {
-
     console.error(error);
 
-    alert(
-      "Errore durante la modifica della recensione."
-    );
+    alert("Errore durante la modifica della recensione.");
 
     return;
   }
-
 
   alert(
     status === "approved"
@@ -289,8 +282,7 @@ console.log("UPDATE ERROR:", error);
       : "Recensione rifiutata!"
   );
 
-
-  loadPendingReviews();
+  await loadPendingReviews();
 }
 
 
