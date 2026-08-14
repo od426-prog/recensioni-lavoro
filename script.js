@@ -453,7 +453,7 @@ form.addEventListener(
       valutazione: score,
 pro: reviewText || null,
 contro: null,
-      stato: "pending"
+stato: "approved"
     })
     .select()
     .single();
