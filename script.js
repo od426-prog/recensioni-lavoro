@@ -248,15 +248,8 @@ const date = review.created_at
       </div>
 
       <div class="review-section">
-        <h3>👍 Pro</h3>
-        <p>${review.pro || "Nessun commento"}</p>
-      </div>
-
-      <div class="review-section">
-        <h3>👎 Contro</h3>
-        <p>${review.contro || "Nessun commento"}</p>
-      </div>
-
+  <p>${review.pro || "Nessuna recensione"}</p>
+</div>
     </div>
   `;
 }).join("");
