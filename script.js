@@ -374,17 +374,11 @@ form.addEventListener(
           .value
       );
 
-    const pros =
-      document
-        .getElementById("pros")
-        .value
-        .trim();
-
-    const cons =
-      document
-        .getElementById("cons")
-        .value
-        .trim();
+    const reviewText =
+  document
+    .getElementById("reviewText")
+    .value
+    .trim();
 
     if (!name || !city || !score) {
 
