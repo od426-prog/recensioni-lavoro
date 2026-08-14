@@ -120,7 +120,11 @@
   <div id="reviews">
     Caricamento...
   </div>
+<h2 style="margin-top: 40px;">Recensioni pubblicate</h2>
 
+<div id="publishedReviews">
+  Caricamento...
+</div>
 </div>
 
 <script>
@@ -249,7 +253,105 @@ async function loadPendingReviews() {
   }).join("");
 }
 
+async function loadPublishedReviews() {
 
+  const container =
+    document.getElementById("publishedReviews");
+
+  const { data, error } = await db
+    .from("recensioni")
+    .select(`
+      id,
+      valutazione,
+      pro,
+      contro,
+      stato,
+      created_at,
+      aziende (
+        nome,
+        citta,
+        provincia
+      )
+    `)
+    .eq("stato", "approved")
+    .order("created_at", {
+      ascending: false
+    });
+
+  if (error) {
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="empty">
+        Errore nel caricamento delle recensioni pubblicate.
+      </div>
+    `;
+
+    return;
+  }
+
+  if (!data || data.length === 0) {
+
+    container.innerHTML = `
+      <div class="empty">
+        Nessuna recensione pubblicata.
+      </div>
+    `;
+
+    return;
+  }
+
+  container.innerHTML = data.map(review => {
+
+    const company =
+      review.aziende || {};
+
+    const stars =
+      "★".repeat(review.valutazione) +
+      "☆".repeat(5 - review.valutazione);
+
+    return `
+      <div class="review" data-id="${review.id}">
+
+        <div class="company">
+          ${company.nome || "Azienda"}
+        </div>
+
+        <div class="location">
+          📍 ${company.citta || ""}
+          ${company.provincia || ""}
+        </div>
+
+        <div class="rating">
+          ${stars}
+        </div>
+
+        <div class="section">
+          <strong>👍 Pro</strong>
+          ${review.pro || "Nessun commento"}
+        </div>
+
+        <div class="section">
+          <strong>👎 Contro</strong>
+          ${review.contro || "Nessun commento"}
+        </div>
+
+        <div class="buttons">
+
+          <button
+            class="reject"
+            onclick="deleteReview('${review.id}')">
+            🗑️ Elimina
+          </button>
+
+        </div>
+
+      </div>
+    `;
+
+  }).join("");
+}
 async function moderateReview(id, status) {
 
   const text =
@@ -284,10 +386,31 @@ async function moderateReview(id, status) {
 
   await loadPendingReviews();
 }
+async function deleteReview(id) {
 
+  if (!confirm("Sei sicuro di voler eliminare definitivamente questa recensione?")) {
+    return;
+  }
+
+  const { error } = await db.rpc("delete_review", {
+    review_id: id
+  });
+
+  console.log("DELETE ERROR:", error);
+
+  if (error) {
+    console.error(error);
+    alert("Errore durante l'eliminazione della recensione.");
+    return;
+  }
+
+  alert("Recensione eliminata!");
+
+  await loadPublishedReviews();
+}
 
 loadPendingReviews();
-
+loadPublishedReviews();
 </script>
 
 </body>
