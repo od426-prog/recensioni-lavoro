@@ -495,8 +495,7 @@ console.log("ERRORE SALVATAGGIO:", reviewError);
       form.reset();
 
       closeModal();
-
-      alert(
+      
 const successModal = document.createElement("div");
 
 successModal.innerHTML = `
