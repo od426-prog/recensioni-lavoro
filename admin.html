@@ -155,7 +155,17 @@ const db = createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
+async function checkAdmin() {
 
+  const { data: { session } } =
+    await db.auth.getSession();
+
+  if (!session) {
+    window.location.href = "login.html";
+    return;
+  }
+
+}
 
 async function loadPendingReviews() {
 
@@ -448,8 +458,10 @@ async function deleteReview(id) {
   await loadPublishedReviews();
 }
 
-loadPendingReviews();
-loadPublishedReviews();
+checkAdmin().then(() => {
+  loadPendingReviews();
+  loadPublishedReviews();
+});
 </script>
 
 </body>
