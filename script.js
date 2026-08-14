@@ -93,12 +93,17 @@ async function loadCompanies(filter = "") {
 
   const companies = data.filter(company => {
 
-    const text =
-      `${company.nome} ${company.citta} ${company.provincia || ""}`
-      .toLowerCase();
+  const text =
+    `${company.nome} ${company.citta} ${company.provincia || ""}`
+    .toLowerCase();
 
-    return text.includes(q);
-  });
+  const approvedReviews =
+    (company.recensioni || []).filter(
+      review => review.stato === "approved"
+    );
+
+  return text.includes(q) && approvedReviews.length > 0;
+});
 
   renderCompanies(companies);
 }
