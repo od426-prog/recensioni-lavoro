@@ -261,8 +261,6 @@ reviewsList.innerHTML = reviews.map(review => {
   `;
 }).join("");
 
-}).join("");
-
 viewModal.classList.remove("hidden");
 viewModal.setAttribute("aria-hidden", "false");
 viewModal.setAttribute("aria-hidden", "false");
