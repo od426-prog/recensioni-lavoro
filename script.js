@@ -497,8 +497,65 @@ console.log("ERRORE SALVATAGGIO:", reviewError);
       closeModal();
 
       alert(
-  "Grazie! La tua recensione è stata pubblicata."
-);
+const successModal = document.createElement("div");
+
+successModal.innerHTML = `
+  <div style="
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+  ">
+    <div style="
+      background: white;
+      border-radius: 18px;
+      padding: 32px;
+      width: min(90%, 420px);
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    ">
+      <div style="
+        font-size: 42px;
+        margin-bottom: 12px;
+      ">✓</div>
+
+      <h2 style="
+        margin: 0 0 10px;
+        color: #111827;
+      ">Recensione pubblicata!</h2>
+
+      <p style="
+        margin: 0 0 24px;
+        color: #6b7280;
+        font-size: 16px;
+      ">
+        Grazie per aver condiviso la tua esperienza.
+      </p>
+
+      <button id="successModalOk" style="
+        border: none;
+        background: #2563eb;
+        color: white;
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+      ">
+        OK
+      </button>
+    </div>
+  </div>
+`;
+
+document.body.appendChild(successModal);
+
+document.getElementById("successModalOk").onclick = () => {
+  successModal.remove();
+};
 
       loadCompanies(
         searchInput.value
