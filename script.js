@@ -231,17 +231,17 @@ reviewsList.innerHTML = reviews.map(review => {
     "★".repeat(review.valutazione) +
     "☆".repeat(5 - review.valutazione);
 
-  const date = review.created_at
-    ? new Date(review.created_at).toLocaleDateString("it-IT")
-    : "";
+const date = review.created_at
+  ? new Date(review.created_at).toLocaleDateString("it-IT")
+  : "Data non disponibile";
 
   return `
     <div class="review-modal-item">
 
-      <div class="review-modal-header">
-        <strong>UTENTE ANONIMO</strong>
-        <span>${date}</span>
-      </div>
+<div class="review-modal-header">
+  <strong>UTENTE ANONIMO</strong>
+  <span>Pubblicata il ${date}</span>
+</div>
 
       <div class="review-view-rating">
         ${stars}
