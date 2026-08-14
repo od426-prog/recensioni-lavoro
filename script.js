@@ -479,4 +479,3 @@ form.addEventListener(
 // ==========================================
 
 loadCompanies();
-});
