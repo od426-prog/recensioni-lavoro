@@ -369,7 +369,7 @@ form.addEventListener(
 
     const reviewText =
   document
-    .getElementById("reviewText")
+    .querySelector("#reviewForm textarea")
     .value
     .trim();
 
