@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recensioni Lavoro — Scopri com'è lavorare davvero</title>
+  <meta name="description" content="Recensioni anonime sulle aziende italiane. Leggi e condividi esperienze di lavoro.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#">Recensioni<span>Lavoro</span></a>
+      <nav>
+        <a href="#aziende">Aziende</a>
+        <a href="#come-funziona">Come funziona</a>
+        <button class="btn btn-primary" id="openReview">Scrivi una recensione</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">RECENSIONI ANONIME • ITALIA</div>
+          <h1>Prima di accettare un lavoro,<br><span>scopri com'è davvero.</span></h1>
+          <p>Leggi le esperienze di chi ci ha lavorato. Stipendio, ambiente, orari, management, pro e contro.</p>
+          <div class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Cerca un'azienda..." autocomplete="off">
+            <button class="btn btn-dark" id="searchBtn">Cerca</button>
+          </div>
+          <div class="hero-note">🔒 Le recensioni vengono pubblicate senza mostrare l'identità dell'autore.</div>
+        </div>
+        <div class="hero-card">
+          <div class="mini-label">ESEMPIO</div>
+          <h3>Un'azienda vista da chi ci lavora</h3>
+          <div class="big-rating"><strong>4,1</strong><span>★★★★★</span></div>
+          <div class="rating-row"><span>Ambiente</span><b>4,4 ★</b></div>
+          <div class="rating-row"><span>Stipendio</span><b>3,5 ★</b></div>
+          <div class="rating-row"><span>Orari</span><b>4,0 ★</b></div>
+          <div class="rating-row"><span>Management</span><b>3,8 ★</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="aziende">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">ESPLORA</div>
+            <h2>Aziende recensite</h2>
+          </div>
+          <button class="text-btn" id="addCompany">+ Aggiungi azienda</button>
+        </div>
+        <div id="companyGrid" class="company-grid"></div>
+        <div id="emptyState" class="empty hidden">Nessuna azienda trovata. Prova un'altra ricerca.</div>
+      </div>
+    </section>
+
+    <section class="section alt" id="come-funziona">
+      <div class="container">
+        <div class="section-head centered">
+          <div>
+            <div class="eyebrow">SEMPLICE</div>
+            <h2>Come funziona</h2>
+          </div>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><h3>Cerca l'azienda</h3><p>Trova l'azienda e leggi le esperienze di altri lavoratori.</p></div>
+          <div class="step"><div class="step-num">02</div><h3>Scrivi la tua recensione</h3><p>Valuta il lavoro e racconta in modo sincero pro e contro.</p></div>
+          <div class="step"><div class="step-num">03</div><h3>Aiuta chi verrà dopo</h3><p>La tua esperienza può aiutare qualcuno a scegliere meglio.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <strong>Recensioni Lavoro</strong>
+      <span>Un progetto indipendente per rendere il mondo del lavoro più trasparente.</span>
+    </div>
+  </footer>
+
+  <div class="modal hidden" id="reviewModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card">
+      <button class="close" data-close>×</button>
+      <div class="eyebrow">RECENSIONE ANONIMA</div>
+      <h2>Racconta la tua esperienza</h2>
+      <p class="muted">Questa prima versione è una demo: i dati vengono salvati solo nel browser.</p>
+      <form id="reviewForm">
+        <label>Azienda
+          <input id="companyName" required placeholder="Es. Azienda S.p.A.">
+        </label>
+        <label>Luogo
+          <input id="companyCity" required placeholder="Es. Perugia">
+        </label>
+        <label>Valutazione complessiva
+          <select id="overall" required>
+            <option value="">Seleziona...</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+        </label>
+        <label>Pro
+          <textarea id="pros" placeholder="Cosa ti è piaciuto?"></textarea>
+        </label>
+        <label>Contro
+          <textarea id="cons" placeholder="Cosa non ti è piaciuto?"></textarea>
+        </label>
+        <button class="btn btn-primary full" type="submit">Pubblica recensione anonima</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
