@@ -458,8 +458,8 @@ form.addEventListener(
     .insert({
       azienda_id: companyId,
       valutazione: score,
-      pro: pros || null,
-      contro: cons || null,
+pro: reviewText || null,
+contro: null,
       stato: "pending"
     })
     .select()
