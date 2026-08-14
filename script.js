@@ -372,7 +372,35 @@ form.addEventListener(
     .querySelector("#reviewForm textarea")
     .value
     .trim();
+const testoControllato = reviewText.toLowerCase();
 
+const paroleVietate = [
+  "puttana",
+  "cazzo",
+  "merda",
+  "stronzo",
+  "troia",
+  "vaffanculo"
+];
+
+const contieneParolaVietata = paroleVietate.some(
+  parola => testoControllato.includes(parola)
+);
+
+if (contieneParolaVietata) {
+  alert("La recensione contiene un linguaggio non consentito.");
+  return;
+}
+
+if (reviewText.length < 10) {
+  alert("La recensione deve contenere almeno 10 caratteri.");
+  return;
+}
+
+if (reviewText.length > 2000) {
+  alert("La recensione è troppo lunga. Massimo 2000 caratteri.");
+  return;
+}
     if (!name || !city || !score) {
 
       alert(
