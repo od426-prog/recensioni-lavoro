@@ -197,12 +197,12 @@ grid.addEventListener("click", async (event) => {
 
   const companyId = card.dataset.companyId;
 
-  const { data: reviews, error } = await db
-    .from("recensioni")
-    .select("valutazione, pro, contro, stato, created_at")
-    .eq("azienda_id", companyId)
-    .eq("stato", "approved")
-    .order("created_at", { ascending: false });
+const { data: reviews, error } = await db
+  .from("recensioni")
+  .select("valutazione, recensione, stato, created_at")
+  .eq("azienda_id", companyId)
+  .eq("stato", "approved")
+  .order("created_at", { ascending: false });
 
   if (error) {
     console.error(error);
@@ -248,8 +248,7 @@ const date = review.created_at
       </div>
 
       <div class="review-section">
-  <p>${review.pro || "Nessuna recensione"}</p>
-</div>
+<p>${review.recensione || "Nessuna recensione"}</p>
     </div>
   `;
 }).join("");
