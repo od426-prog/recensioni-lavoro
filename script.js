@@ -235,6 +235,7 @@ document.querySelectorAll("[data-close-view-review]").forEach(element => {
     viewModal.classList.add("hidden");
     viewModal.setAttribute("aria-hidden", "true");
   });
+});
 // ==========================================
 // RICERCA
 // ==========================================
