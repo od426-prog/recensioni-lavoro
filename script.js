@@ -142,8 +142,7 @@ const average =
       ) / count
     : 0;
     return `
-      <article class="company-card">
-
+<article class="company-card" data-company-id="${company.id}">
         <div class="company-top">
 
           <div>
@@ -182,7 +181,44 @@ const average =
 
   }).join("");
 }
+// ========================================
+// APERTURA RECENSIONE
+// ========================================
 
+grid.addEventListener("click", async (event) => {
+  const card = event.target.closest(".company-card");
+
+  if (!card) return;
+
+  const companyId = card.dataset.companyId;
+
+  const { data: reviews, error } = await db
+    .from("recensioni")
+    .select("valutazione, pro, contro, stato, created_at")
+    .eq("azienda_id", companyId)
+    .eq("stato", "approved")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    alert("Impossibile caricare la recensione.");
+    return;
+  }
+
+  if (!reviews || reviews.length === 0) {
+    alert("Non ci sono recensioni approvate per questa azienda.");
+    return;
+  }
+
+  const review = reviews[0];
+
+  alert(
+    `RECENSIONE ANONIMA\n\n` +
+    `Valutazione: ${review.valutazione}/5\n\n` +
+    `PRO:\n${review.pro || "Nessun commento"}\n\n` +
+    `CONTRO:\n${review.contro || "Nessun commento"}`
+  );
+});
 // ==========================================
 // RICERCA
 // ==========================================
