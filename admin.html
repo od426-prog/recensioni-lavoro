@@ -262,12 +262,14 @@ async function moderateReview(id, status) {
   }
 
 
-  const { error } = await db
-    .from("recensioni")
-    .update({
-      stato: status
-    })
-    .eq("id", id);
+const { data, error } = await db
+  .from("recensioni")
+  .update({ stato: status })
+  .eq("id", id)
+  .select();
+
+console.log("UPDATE DATA:", data);
+console.log("UPDATE ERROR:", error);
 
 
   if (error) {
