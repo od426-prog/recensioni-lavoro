@@ -122,21 +122,25 @@ function renderCompanies(companies) {
 
   grid.innerHTML = companies.map(company => {
 
-    const reviews =
-      company.recensioni || [];
+  const reviews =
+  company.recensioni || [];
 
-    const count =
-      reviews.length;
+const approvedReviews =
+  reviews.filter(
+    review => review.stato === "approved"
+  );
 
-    const average =
-      count
-        ? reviews.reduce(
-            (sum, review) =>
-              sum + review.valutazione,
-            0
-          ) / count
-        : 0;
+const count =
+  approvedReviews.length;
 
+const average =
+  count
+    ? approvedReviews.reduce(
+        (sum, review) =>
+          sum + review.valutazione,
+        0
+      ) / count
+    : 0;
     return `
       <article class="company-card">
 
