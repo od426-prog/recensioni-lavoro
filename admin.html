@@ -262,11 +262,10 @@ async function moderateReview(id, status) {
   }
 
 
-const { data, error } = await db
-  .from("recensioni")
-  .update({ stato: status })
-  .eq("id", id)
-  .select();
+const { error } = await db.rpc("moderate_review", {
+  review_id: id,
+  new_status: status
+});
 
 console.log("UPDATE DATA:", data);
 console.log("UPDATE ERROR:", error);
