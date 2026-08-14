@@ -63,20 +63,20 @@ function escapeHtml(value) {
 async function loadCompanies(filter = "") {
 
   const { data, error } = await db
-    .from("aziende")
-    .select(`
-      id,
-      nome,
-      citta,
-      provincia,
-      recensioni (
-        valutazione
-      )
-    `)
-    .order("created_at", {
-      ascending: false
-    });
-
+  .from("aziende")
+  .select(`
+    id,
+    nome,
+    citta,
+    provincia,
+    recensioni (
+      valutazione,
+      stato
+    )
+  `)
+  .order("created_at", {
+    ascending: false
+  });
   if (error) {
     console.error(error);
 
