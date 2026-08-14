@@ -483,7 +483,6 @@ if (reviewText.length > 2000) {
       stato: "approved"
     });
       
-console.log("RECENSIONE CREATA:", newReview);
 console.log("ERRORE SALVATAGGIO:", reviewError);
 
       if (reviewError) {
