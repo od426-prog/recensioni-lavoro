@@ -122,6 +122,20 @@
   </div>
 <h2 style="margin-top: 40px;">Recensioni pubblicate</h2>
 
+<input
+  type="text"
+  id="searchPublished"
+  placeholder="🔎 Cerca azienda, città, provincia o testo..."
+  oninput="filterPublishedReviews()"
+  style="
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+">
+
 <div id="publishedReviews">
   Caricamento...
 </div>
@@ -252,7 +266,9 @@ async function loadPendingReviews() {
 
   }).join("");
 }
-
+  
+let publishedReviewsData = [];
+  
 async function loadPublishedReviews() {
 
   const container =
@@ -351,6 +367,29 @@ async function loadPublishedReviews() {
     `;
 
   }).join("");
+}
+  function filterPublishedReviews() {
+
+  const search =
+    document.getElementById("searchPublished").value
+      .toLowerCase()
+      .trim();
+
+  const reviews =
+    document.querySelectorAll("#publishedReviews .review");
+
+  reviews.forEach(review => {
+
+    const text =
+      review.textContent.toLowerCase();
+
+    if (text.includes(search)) {
+      review.style.display = "";
+    } else {
+      review.style.display = "none";
+    }
+
+  });
 }
 async function moderateReview(id, status) {
 
