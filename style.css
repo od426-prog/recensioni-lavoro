@@ -20,7 +20,116 @@ h1{font-size:50px;line-height:1.08;letter-spacing:-2.5px;margin:0 0 20px}h1 span
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:25px}.step-num{color:var(--blue);font-weight:900;font-size:12px;letter-spacing:1px;margin-bottom:35px}.step p{color:var(--muted);margin:0}
 footer{background:var(--ink);color:#fff;padding:28px 0}.footer-inner{display:flex;justify-content:space-between;gap:20px;font-size:13px}.footer-inner span{color:#b7c0ca}
 .modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center}.modal-backdrop{position:absolute;inset:0;background:rgba(10,18,28,.55)}.modal-card{position:relative;background:#fff;width:min(900px,92%);max-height:94vh;overflow:auto;border-radius:18px;padding:30px;box-shadow:0 30px 80px rgba(0,0,0,.25)}.close{position:absolute;right:16px;top:12px;border:0;background:transparent;font-size:30px;cursor:pointer;color:#68727d}.modal-card h2{margin-bottom:6px}.muted{color:var(--muted);font-size:13px;margin-top:0}form{display:grid;gap:14px;margin-top:20px}label{font-size:13px;font-weight:700;display:grid;gap:6px}input,select,textarea{font:inherit;border:1px solid #d8dde4;border-radius:9px;padding:11px;outline:none}textarea{min-height:85px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--blue)}
-@media(max-width:800px){nav a{display:none}.hero-inner{grid-template-columns:1fr;gap:35px}h1{font-size:40px}.company-grid,.steps{grid-template-columns:1fr}.footer-inner{flex-direction:column}}
+@media(max-width:800px){
+
+  .container{
+    width:92%;
+  }
+
+  .site-header{
+    height:64px;
+  }
+
+  .nav{
+    gap:12px;
+  }
+
+  .brand{
+    font-size:19px;
+  }
+
+  nav{
+    gap:8px;
+  }
+
+  nav a{
+    display:none;
+  }
+
+  nav .btn{
+    padding:10px 12px;
+    font-size:12px;
+  }
+
+  .hero{
+    padding:48px 0 55px;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  h1{
+    font-size:38px;
+    letter-spacing:-1.8px;
+  }
+
+  .hero-copy>p{
+    font-size:16px;
+  }
+
+  .search-box{
+    max-width:100%;
+  }
+
+  .search-box input{
+    min-width:0;
+    font-size:15px;
+  }
+
+  .hero-card{
+    padding:22px;
+  }
+
+  .section{
+    padding:50px 0;
+  }
+
+  .section-head{
+    align-items:flex-start;
+    gap:15px;
+  }
+
+  .company-grid,
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .company-card{
+    padding:20px;
+  }
+
+  .modal-card{
+    width:94%;
+    max-height:90vh;
+    padding:22px;
+    border-radius:18px;
+  }
+
+  .modal-card h2{
+    font-size:25px;
+  }
+
+  .review-modal-item{
+    padding:18px;
+    margin-top:14px;
+  }
+
+  .review-modal-header{
+    gap:10px;
+    align-items:flex-start;
+  }
+
+  .review-modal-header span{
+    text-align:right;
+    white-space:nowrap;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+  }
+}
 .review-modal-item{
   background:#fff;
   border:1px solid var(--line);
