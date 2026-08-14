@@ -235,7 +235,7 @@ document.getElementById("viewReviewCons").textContent =
 viewModal.classList.remove("hidden");
 viewModal.setAttribute("aria-hidden", "false");
 });
-function closeModal() {
+function closeViewReviewModal() {
     const modal = document.getElementById("viewReviewModal");
 
     if (!modal) return;
@@ -245,7 +245,7 @@ function closeModal() {
 }
 
 document.querySelectorAll("[data-close-view-review]").forEach(button => {
-    button.addEventListener("click", closeModal);
+    button.addEventListener("click", closeViewReviewModal);
 });
 // ==========================================
 // RICERCA
