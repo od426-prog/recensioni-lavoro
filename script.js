@@ -428,22 +428,21 @@ form.addEventListener(
       // SALVA LA RECENSIONE
       // --------------------------------------
 
-      const { error: reviewError } =
-        await db
-          .from("recensioni")
-          .insert({
+      const { data: newReview, error: reviewError } =
+  await db
+    .from("recensioni")
+    .insert({
+      azienda_id: companyId,
+      valutazione: score,
+      pro: pros || null,
+      contro: cons || null,
+      stato: "pending"
+    })
+    .select()
+    .single();
 
-            azienda_id: companyId,
-
-            valutazione: score,
-
-            pro: pros || null,
-
-            contro: cons || null,
-
-            stato: "pending"
-
-          });
+console.log("RECENSIONE CREATA:", newReview);
+console.log("ERRORE SALVATAGGIO:", reviewError);
 
       if (reviewError) {
         throw reviewError;
