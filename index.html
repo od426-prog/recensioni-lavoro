@@ -112,7 +112,30 @@
       </form>
     </div>
   </div>
+<!-- MODAL VISUALIZZA RECENSIONE -->
+<div class="modal hidden" id="viewReviewModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-view-review></div>
 
+  <div class="modal-card review-view-card">
+    <button class="close" data-close-view-review></button>
+
+    <div class="eyebrow">RECENSIONE ANONIMA</div>
+
+    <h2 id="viewReviewCompany"></h2>
+
+    <div class="review-view-rating" id="viewReviewRating"></div>
+
+    <div class="review-section">
+      <h3>👍 Pro</h3>
+      <p id="viewReviewPros"></p>
+    </div>
+
+    <div class="review-section">
+      <h3>👎 Contro</h3>
+      <p id="viewReviewCons"></p>
+    </div>
+  </div>
+</div>
  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js"></script>
 </body>
