@@ -212,13 +212,29 @@ grid.addEventListener("click", async (event) => {
 
   const review = reviews[0];
 
-  alert(
-    `RECENSIONE ANONIMA\n\n` +
-    `Valutazione: ${review.valutazione}/5\n\n` +
-    `PRO:\n${review.pro || "Nessun commento"}\n\n` +
-    `CONTRO:\n${review.contro || "Nessun commento"}`
-  );
+  const viewModal = document.getElementById("viewReviewModal");
+
+document.getElementById("viewReviewCompany").textContent =
+  card.querySelector(".company-name")?.textContent || "Azienda";
+
+document.getElementById("viewReviewRating").textContent =
+  "★".repeat(review.valutazione) +
+  "☆".repeat(5 - review.valutazione);
+
+document.getElementById("viewReviewPros").textContent =
+  review.pro || "Nessun commento";
+
+document.getElementById("viewReviewCons").textContent =
+  review.contro || "Nessun commento";
+
+viewModal.classList.remove("hidden");
+viewModal.setAttribute("aria-hidden", "false");
 });
+document.querySelectorAll("[data-close-view-review]").forEach(element => {
+  element.addEventListener("click", () => {
+    viewModal.classList.add("hidden");
+    viewModal.setAttribute("aria-hidden", "true");
+  });
 // ==========================================
 // RICERCA
 // ==========================================
