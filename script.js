@@ -473,7 +473,7 @@ if (reviewText.length > 2000) {
       // SALVA LA RECENSIONE
       // --------------------------------------
 
-     const { data: newReview, error: reviewError } =
+     const { error: reviewError } =
   await db
     .from("recensioni")
     .insert({
@@ -481,10 +481,8 @@ if (reviewText.length > 2000) {
       valutazione: score,
       recensione: reviewText || null,
       stato: "approved"
-    })
-    .select()
-    .single();
-
+    });
+      
 console.log("RECENSIONE CREATA:", newReview);
 console.log("ERRORE SALVATAGGIO:", reviewError);
 
